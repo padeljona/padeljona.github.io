@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Padel avec Jona</title>
+<meta name="description" content="Matchs, tournois et interclubs : vois les places libres et inscris-toi en 10 secondes.">
+<!-- aperçu WhatsApp / Messenger / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_BE">
+<meta property="og:title" content="🎾 Padel avec Jona">
+<meta property="og:description" content="Matchs, tournois et interclubs : vois les places libres et inscris-toi en 10 secondes.">
+<meta property="og:image" content="https://padeljona.github.io/apercu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://padeljona.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- icône sur l'écran d'accueil -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d1726">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Padel Jona">
+<style>
+html,body{margin:0;height:100%;background:#1d4f91;overflow:hidden}
+iframe{position:fixed;inset:0;z-index:1;width:100%;height:100%;border:0;background:transparent}
+/* la balle reste derrière le cadre (transparent) jusqu'à ce que le site se dessine par-dessus */
+#att{position:fixed;inset:0;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#fff;font:600 16px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;transition:opacity .3s}
+#att svg{width:72px;height:72px;animation:b 1s ease-in-out infinite alternate}
+@keyframes b{to{transform:translateY(-14px)}}
+#att a{color:#c8f031}
+</style>
+</head>
+<body>
+<div id="att">
+  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#c8f031"/><path d="M4 9c6 3 8 11 4 19M28 23c-6-3-8-11-4-19" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+  <div>Chargement des rendez-vous…</div>
+  <noscript><a href="https://script.google.com/macros/s/AKfycbwfiueCFyEpsXJAoSN6Xh4kXlB-tGRBtPhSk7ytzpbZXsqcl3fBHD_tWp6QypoEMoew/exec">Ouvrir le site</a></noscript>
+</div>
+<script>
+// le site (Google Apps Script) s'affiche en plein écran ; ?e=… (lien d'un match) est transmis tel quel
+var SITE = 'https://script.google.com/macros/s/AKfycbwfiueCFyEpsXJAoSN6Xh4kXlB-tGRBtPhSk7ytzpbZXsqcl3fBHD_tWp6QypoEMoew/exec';
+var f = document.createElement('iframe');
+f.src = SITE + location.search;
+f.title = 'Padel avec Jona';
+f.allow = 'clipboard-write';
+f.setAttribute('allowtransparency', 'true');
+document.body.appendChild(f);
+// filet de sécurité : après 15 s, un lien direct apparaît sous le cadre (invisible si le site est déjà affiché)
+setTimeout(function(){ document.getElementById('att').lastElementChild.outerHTML = '<a href="' + SITE + location.search + '">Ça traîne ? Ouvrir le site directement</a>'; }, 15000);
+</script>
+</body>
+</html>
